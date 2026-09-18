@@ -267,7 +267,7 @@ const generateAllInventory = (): Flat[] => {
     for (let u = 1; u <= navkar.unitsPerFloor; u++) {
       const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
       const is2BHK = u >= 2;
-      let status: UnitStatus = (floor === 3 && u === 1) || (floor === 7 && u === 2) ? "BOOKED" : (floor === 5 ? "HOLD" : "AVAILABLE");
+      const status: UnitStatus = (floor === 3 && u === 1) || (floor === 7 && u === 2) ? "BOOKED" : (floor === 5 ? "HOLD" : "AVAILABLE");
       
       flats.push({
         id: `navkar-${unitNumber}`,
@@ -293,7 +293,7 @@ const generateAllInventory = (): Flat[] => {
       for (let u = 1; u <= aloha.unitsPerFloor; u++) {
         const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
         const is2BHK = u % 2 === 0;
-        let status: UnitStatus = (floor === 2 && u === 3) || (floor === 4 && u === 1) ? "BOOKED" : "AVAILABLE";
+        const status: UnitStatus = (floor === 2 && u === 3) || (floor === 4 && u === 1) ? "BOOKED" : "AVAILABLE";
 
         flats.push({
           id: `aloha-${phase.replace(/\s+/g, '')}-${unitNumber}`,

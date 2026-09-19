@@ -64,12 +64,12 @@ export default function InventoryPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pb-12 space-y-6">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6">
       {/* Header & Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-slate-800">{selectedProject.name}</h1>
+          <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-800">{selectedProject.name}</h1>
             {selectedProject.isRedevelopment && (
               <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-purple-200 flex items-center space-x-1">
                 <Handshake className="w-3.5 h-3.5 mr-1" />
@@ -77,19 +77,19 @@ export default function InventoryPage() {
               </span>
             )}
           </div>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             {selectedProject.location} • {selectedProject.totalFloors} Floors Matrix • Total {projectFlats.length} Units in Project
           </p>
         </div>
 
         {/* Wing / Tower Switcher */}
-        <div className="flex items-center space-x-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 bg-slate-100 p-1 sm:p-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
           {selectedProject.wings.map(wing => (
             <button
               key={wing}
               onClick={() => setActiveWing(wing)}
               className={clsx(
-                "px-5 py-2 rounded-lg text-sm font-semibold transition-all",
+                "px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all",
                 activeWing === wing 
                   ? "bg-white text-blue-600 shadow-sm" 
                   : "text-slate-600 hover:text-slate-900"
@@ -102,125 +102,125 @@ export default function InventoryPage() {
       </div>
 
       {/* Summary KPI Cards including Society Tie-up */}
-      <div className={`grid gap-3 ${selectedProject.isRedevelopment ? 'grid-cols-2 md:grid-cols-5' : 'grid-cols-2 md:grid-cols-4'}`}>
+      <div className={`grid gap-2.5 sm:gap-3 ${selectedProject.isRedevelopment ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4'}`}>
         {selectedProject.isRedevelopment && (
-          <div className="bg-purple-50/80 border border-purple-200 p-4 rounded-xl flex items-center justify-between shadow-xs">
+          <div className="bg-purple-50/80 border border-purple-200 p-3 sm:p-4 rounded-xl flex items-center justify-between shadow-xs">
             <div>
-              <p className="text-purple-700 text-xs font-bold uppercase tracking-wider mb-1 flex items-center">
-                <Handshake className="w-3.5 h-3.5 mr-1" />
+              <p className="text-purple-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5 flex items-center">
+                <Handshake className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1" />
                 Society Rehab
               </p>
-              <p className="text-2xl font-black text-purple-900">{rehabCount}</p>
-              <p className="text-[11px] text-purple-600 font-medium">Tenant Member Quota</p>
+              <p className="text-xl sm:text-2xl font-black text-purple-900">{rehabCount}</p>
+              <p className="text-[10px] sm:text-[11px] text-purple-600 font-medium">Tenant Member Quota</p>
             </div>
-            <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-              <Users className="w-5 h-5 text-purple-700" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-full flex items-center justify-center shrink-0">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-purple-700" />
             </div>
           </div>
         )}
 
-        <div className="bg-emerald-50/80 border border-emerald-200 p-4 rounded-xl flex items-center justify-between shadow-xs">
+        <div className="bg-emerald-50/80 border border-emerald-200 p-3 sm:p-4 rounded-xl flex items-center justify-between shadow-xs">
           <div>
-            <p className="text-emerald-700 text-xs font-bold uppercase tracking-wider mb-1">AVAILABLE</p>
-            <p className="text-2xl font-black text-emerald-800">{availableCount}</p>
-            <p className="text-[11px] text-emerald-600 font-medium">Free Sale Inventory</p>
+            <p className="text-emerald-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">AVAILABLE</p>
+            <p className="text-xl sm:text-2xl font-black text-emerald-800">{availableCount}</p>
+            <p className="text-[10px] sm:text-[11px] text-emerald-600 font-medium">Free Sale Inventory</p>
           </div>
-          <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-            <Home className="w-5 h-5 text-emerald-700" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+            <Home className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700" />
           </div>
         </div>
 
-        <div className="bg-amber-50/80 border border-amber-200 p-4 rounded-xl flex items-center justify-between shadow-xs">
+        <div className="bg-amber-50/80 border border-amber-200 p-3 sm:p-4 rounded-xl flex items-center justify-between shadow-xs">
           <div>
-            <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-1">TOKEN / HOLD</p>
-            <p className="text-2xl font-black text-amber-800">{holdCount}</p>
-            <p className="text-[11px] text-amber-600 font-medium">Advance Under Process</p>
+            <p className="text-amber-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">TOKEN / HOLD</p>
+            <p className="text-xl sm:text-2xl font-black text-amber-800">{holdCount}</p>
+            <p className="text-[10px] sm:text-[11px] text-amber-600 font-medium">Advance In Process</p>
           </div>
-          <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-            <Tag className="w-5 h-5 text-amber-700" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
+            <Tag className="w-4 h-4 sm:w-5 sm:h-5 text-amber-700" />
           </div>
         </div>
 
-        <div className="bg-rose-50/80 border border-rose-200 p-4 rounded-xl flex items-center justify-between shadow-xs">
+        <div className="bg-rose-50/80 border border-rose-200 p-3 sm:p-4 rounded-xl flex items-center justify-between shadow-xs">
           <div>
-            <p className="text-rose-700 text-xs font-bold uppercase tracking-wider mb-1">BOOKED / SOLD</p>
-            <p className="text-2xl font-black text-rose-800">{bookedCount}</p>
-            <p className="text-[11px] text-rose-600 font-medium">Agreements Executed</p>
+            <p className="text-rose-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">BOOKED / SOLD</p>
+            <p className="text-xl sm:text-2xl font-black text-rose-800">{bookedCount}</p>
+            <p className="text-[10px] sm:text-[11px] text-rose-600 font-medium">Agreements Done</p>
           </div>
-          <div className="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center">
-            <User className="w-5 h-5 text-rose-700" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-rose-100 rounded-full flex items-center justify-center shrink-0">
+            <User className="w-4 h-4 sm:w-5 sm:h-5 text-rose-700" />
           </div>
         </div>
 
-        <div className="bg-cyan-50/80 border border-cyan-200 p-4 rounded-xl flex items-center justify-between shadow-xs">
+        <div className="bg-cyan-50/80 border border-cyan-200 p-3 sm:p-4 rounded-xl flex items-center justify-between shadow-xs">
           <div>
-            <p className="text-cyan-700 text-xs font-bold uppercase tracking-wider mb-1">INVESTOR / JV</p>
-            <p className="text-2xl font-black text-cyan-900">{investorCount}</p>
-            <p className="text-[11px] text-cyan-600 font-medium">Partner Share</p>
+            <p className="text-cyan-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">INVESTOR / JV</p>
+            <p className="text-xl sm:text-2xl font-black text-cyan-900">{investorCount}</p>
+            <p className="text-[10px] sm:text-[11px] text-cyan-600 font-medium">Partner Share</p>
           </div>
-          <div className="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center">
-            <Shield className="w-5 h-5 text-cyan-700" />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-cyan-100 rounded-full flex items-center justify-center shrink-0">
+            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-700" />
           </div>
         </div>
       </div>
 
       {/* Quota Filter Tabs */}
-      <div className="flex items-center space-x-2 border-b border-slate-200 pb-3">
-        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mr-2">Filter View:</span>
+      <div className="flex items-center space-x-2 border-b border-slate-200 pb-3 overflow-x-auto scrollbar-none">
+        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider mr-2 shrink-0">Filter:</span>
         <button
           onClick={() => setQuotaFilter("ALL")}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 whitespace-nowrap ${
             quotaFilter === "ALL" ? "bg-slate-800 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"
           }`}
         >
-          All Units ({wingFlats.length})
+          All ({wingFlats.length})
         </button>
         <button
           onClick={() => setQuotaFilter("BUILDER_SALE")}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 whitespace-nowrap ${
             quotaFilter === "BUILDER_SALE" ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
           }`}
         >
-          Builder Free-Sale ({wingFlats.filter(f => f.quota === "BUILDER_SALE").length})
+          Free-Sale ({wingFlats.filter(f => f.quota === "BUILDER_SALE").length})
         </button>
         {selectedProject.isRedevelopment && (
           <button
             onClick={() => setQuotaFilter("SOCIETY_REHAB")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 whitespace-nowrap ${
               quotaFilter === "SOCIETY_REHAB" ? "bg-purple-600 text-white" : "bg-purple-50 text-purple-700 hover:bg-purple-100"
             }`}
           >
-            🤝 Society Rehab Quota ({rehabCount})
+            🤝 Rehab Quota ({rehabCount})
           </button>
         )}
         <button
           onClick={() => setQuotaFilter("INVESTOR_SHARE")}
-          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 whitespace-nowrap ${
             quotaFilter === "INVESTOR_SHARE" ? "bg-cyan-600 text-white" : "bg-cyan-50 text-cyan-700 hover:bg-cyan-100"
           }`}
         >
-          Investor / JV Share ({investorCount})
+          Investor JV ({investorCount})
         </button>
       </div>
 
       {/* Matrix Grid */}
       <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
-        <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="p-3 sm:p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
             {activeWing} • Floor-Wise Architectural Grid
           </span>
-          <div className="flex items-center space-x-4 text-xs">
-            <span className="flex items-center"><span className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300 mr-1.5"></span> Available</span>
-            <span className="flex items-center"><span className="w-3 h-3 rounded bg-amber-100 border border-amber-300 mr-1.5"></span> Token / Hold</span>
-            <span className="flex items-center"><span className="w-3 h-3 rounded bg-rose-100 border border-rose-300 mr-1.5"></span> Sold</span>
+          <div className="flex items-center flex-wrap gap-x-3 sm:gap-x-4 gap-y-1.5 text-[11px] sm:text-xs">
+            <span className="flex items-center"><span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-emerald-100 border border-emerald-300 mr-1.5"></span> Available</span>
+            <span className="flex items-center"><span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-amber-100 border border-amber-300 mr-1.5"></span> Token / Hold</span>
+            <span className="flex items-center"><span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-rose-100 border border-rose-300 mr-1.5"></span> Sold</span>
             {selectedProject.isRedevelopment && (
-              <span className="flex items-center"><span className="w-3 h-3 rounded bg-purple-200 border border-purple-400 mr-1.5"></span> Society Rehab</span>
+              <span className="flex items-center"><span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-purple-200 border border-purple-400 mr-1.5"></span> Society Rehab</span>
             )}
-            <span className="flex items-center"><span className="w-3 h-3 rounded bg-cyan-100 border border-cyan-300 mr-1.5"></span> Investor</span>
+            <span className="flex items-center"><span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded bg-cyan-100 border border-cyan-300 mr-1.5"></span> Investor</span>
           </div>
         </div>
 
-        <div className="p-6 overflow-x-auto">
+        <div className="p-3 sm:p-6 overflow-x-auto">
           <div className="min-w-[680px]">
             {/* Table Header with Units */}
             <div className="grid grid-cols-12 gap-3 mb-3 text-center text-xs font-bold text-slate-400">
@@ -299,20 +299,20 @@ export default function InventoryPage() {
       {/* Flat Details Interactive Modal */}
       <AnimatePresence>
         {selectedFlat && (
-          <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
+          <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center z-50 p-3 sm:p-4">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200"
+              className="bg-white rounded-2xl max-w-lg w-full p-4 sm:p-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto"
             >
-              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
+              <div className="flex items-start justify-between border-b border-slate-100 pb-3 sm:pb-4 mb-4 sm:mb-5">
                 <div>
-                  <div className="flex items-center space-x-2">
-                    <h3 className="text-xl font-bold text-slate-800">
+                  <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-800">
                       Unit {selectedFlat.unitNumber} ({selectedFlat.wing})
                     </h3>
-                    <span className={clsx("px-2.5 py-0.5 rounded-full text-xs font-bold border", statusBadges[selectedFlat.status])}>
+                    <span className={clsx("px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-bold border", statusBadges[selectedFlat.status])}>
                       {selectedFlat.status === "SOCIETY_REHAB" ? "SOCIETY REHAB (TIE-UP)" : selectedFlat.status}
                     </span>
                   </div>
@@ -320,7 +320,7 @@ export default function InventoryPage() {
                 </div>
                 <button 
                   onClick={() => setSelectedFlat(null)}
-                  className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+                  className="p-1.5 sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors shrink-0 ml-2"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -328,7 +328,7 @@ export default function InventoryPage() {
 
               {/* Society Member / Allotment Info if Rehab */}
               {selectedFlat.quota === "SOCIETY_REHAB" ? (
-                <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-5">
+                <div className="bg-purple-50 border border-purple-200 rounded-xl p-3.5 sm:p-4 mb-4 sm:mb-5">
                   <div className="flex items-center space-x-2 mb-2">
                     <Handshake className="w-4 h-4 text-purple-700" />
                     <span className="text-xs font-bold text-purple-900 uppercase">Society Allotment Details</span>
@@ -345,7 +345,7 @@ export default function InventoryPage() {
                   </div>
                 </div>
               ) : selectedFlat.quota === "INVESTOR_SHARE" ? (
-                <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-4 mb-5">
+                <div className="bg-cyan-50 border border-cyan-200 rounded-xl p-3.5 sm:p-4 mb-4 sm:mb-5">
                   <div className="flex items-center space-x-2 mb-1">
                     <Shield className="w-4 h-4 text-cyan-700" />
                     <span className="text-xs font-bold text-cyan-900 uppercase">Partner / JV Share</span>
@@ -359,39 +359,39 @@ export default function InventoryPage() {
                 </div>
               ) : null}
 
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                  <span className="text-xs font-medium text-slate-400">Configuration</span>
-                  <p className="text-base font-bold text-slate-700">{selectedFlat.type} Luxury</p>
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-4 mb-4 sm:mb-6">
+                <div className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                  <span className="text-[11px] sm:text-xs font-medium text-slate-400">Configuration</span>
+                  <p className="text-sm sm:text-base font-bold text-slate-700">{selectedFlat.type} Luxury</p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                  <span className="text-xs font-medium text-slate-400">Carpet Area (RERA)</span>
-                  <p className="text-base font-bold text-slate-700">{selectedFlat.carpetArea} sq.ft</p>
+                <div className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                  <span className="text-[11px] sm:text-xs font-medium text-slate-400">Carpet Area (RERA)</span>
+                  <p className="text-sm sm:text-base font-bold text-slate-700">{selectedFlat.carpetArea} sq.ft</p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                  <span className="text-xs font-medium text-slate-400">Base Rate</span>
-                  <p className="text-base font-bold text-slate-700">₹{selectedFlat.baseRate.toLocaleString('en-IN')}/sq.ft</p>
+                <div className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                  <span className="text-[11px] sm:text-xs font-medium text-slate-400">Base Rate</span>
+                  <p className="text-sm sm:text-base font-bold text-slate-700">₹{selectedFlat.baseRate.toLocaleString('en-IN')}/sq.ft</p>
                 </div>
-                <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                  <span className="text-xs font-medium text-slate-400">Estimated Value</span>
-                  <p className="text-base font-bold text-blue-600">
+                <div className="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-100">
+                  <span className="text-[11px] sm:text-xs font-medium text-slate-400">Estimated Value</span>
+                  <p className="text-sm sm:text-base font-bold text-blue-600 truncate">
                     {formatPrice(selectedFlat.carpetArea, selectedFlat.baseRate)}
                   </p>
                 </div>
               </div>
 
               {selectedFlat.customerName && (
-                <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100 mb-6 flex items-center justify-between">
+                <div className="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-100 mb-4 sm:mb-6 flex items-center justify-between">
                   <div>
                     <span className="text-[11px] font-medium text-slate-400">Current Allottee / Buyer</span>
                     <p className="text-sm font-bold text-slate-700">{selectedFlat.customerName}</p>
                   </div>
-                  <CheckCircle className="w-5 h-5 text-emerald-500" />
+                  <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 ml-2" />
                 </div>
               )}
 
               {/* Action Buttons */}
-              <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:space-x-3">
                 {selectedFlat.status === "AVAILABLE" ? (
                   <>
                     <button 
@@ -400,13 +400,13 @@ export default function InventoryPage() {
                         selectedFlat.status = "HOLD";
                         setSelectedFlat(null);
                       }}
-                      className="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 rounded-xl transition-colors shadow-sm text-sm"
+                      className="w-full sm:flex-1 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 rounded-xl transition-colors shadow-sm text-sm"
                     >
                       Hold Unit (Token)
                     </button>
                     <a 
                       href="/documents"
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl transition-colors shadow-sm flex items-center justify-center text-sm"
+                      className="w-full sm:flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl transition-colors shadow-sm flex items-center justify-center text-sm"
                     >
                       Generate Quotation <ArrowUpRight className="w-4 h-4 ml-1" />
                     </a>

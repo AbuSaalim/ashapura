@@ -81,24 +81,24 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto pb-12 space-y-8">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-6 sm:space-y-8">
       {/* Top Banner: Real Ashapura Group Profile */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 rounded-2xl p-4 sm:p-6 text-white shadow-md relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-2 mb-1.5">
+            <div className="flex items-center space-x-2 mb-1.5 flex-wrap gap-y-1">
               <span className="bg-blue-500/20 text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-400/30">
                 Ashapura Builders ERP Master Console
               </span>
               <span className="text-slate-400 text-xs">• Mumbai & Palghar Division</span>
             </div>
-            <h1 className="text-2xl font-black tracking-tight">Super Admin Executive Dashboard</h1>
+            <h1 className="text-xl sm:text-2xl font-black tracking-tight">Super Admin Executive Dashboard</h1>
             <p className="text-slate-300 text-xs mt-1 max-w-2xl">
               Enterprise management covering Society Redevelopment Tie-ups (CHSL/SRA), Free-Sale High Rises, Suburban Townships & Investor Portfolios.
             </p>
           </div>
-          <div className="flex items-center space-x-3 text-xs bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/15 shrink-0">
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
+          <div className="flex items-center space-x-3 text-xs bg-white/10 backdrop-blur-md px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-white/15 shrink-0">
+            <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
             <div>
               <p className="font-bold text-white">Central Operations Malad HO</p>
               <p className="text-slate-300 text-[11px]">101 Jay Gagan, Liberty Garden</p>
@@ -108,18 +108,18 @@ export default function Dashboard() {
       </div>
 
       {/* KPI Stats Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
         {statCards.map((stat, i) => (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             key={stat.title} 
-            className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md transition-all"
+            className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md transition-all"
           >
             <div className="flex justify-between items-start mb-3">
-              <div className={`p-2.5 rounded-xl border ${stat.bg} ${stat.color}`}>
-                <stat.icon className="w-5 h-5" />
+              <div className={`p-2 sm:p-2.5 rounded-xl border ${stat.bg} ${stat.color}`}>
+                <stat.icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className={`flex items-center text-xs font-bold ${stat.isPositive ? 'text-emerald-600' : 'text-rose-600'}`}>
                 {stat.trend}
@@ -127,7 +127,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div>
-              <p className="text-2xl font-black text-slate-800 tracking-tight mb-0.5">{stat.value}</p>
+              <p className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight mb-0.5">{stat.value}</p>
               <p className="text-slate-700 font-semibold text-xs">{stat.title}</p>
               <p className="text-slate-400 text-[11px] mt-1">{stat.subtext}</p>
             </div>
@@ -136,18 +136,18 @@ export default function Dashboard() {
       </div>
 
       {/* Live Active Projects Quick Selector Grid */}
-      <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
-        <div className="flex items-center justify-between mb-5">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
           <div>
-            <h2 className="text-lg font-bold text-slate-800">Ashapura Builders Active Sites & Tie-Ups</h2>
+            <h2 className="text-base sm:text-lg font-bold text-slate-800">Ashapura Builders Active Sites & Tie-Ups</h2>
             <p className="text-xs text-slate-500">Switch project to inspect dedicated inventory matrix, society rehab allotments and cost sheets</p>
           </div>
-          <Link href="/inventory" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center">
+          <Link href="/inventory" className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center shrink-0">
             Open Full Matrix <ChevronRight className="w-4 h-4 ml-0.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {projects.map((proj) => {
             const isSelected = proj.id === selectedProject.id;
             return (
@@ -204,24 +204,24 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Revenue Area Chart */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs"
+          className="lg:col-span-2 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs"
         >
-          <div className="mb-6 flex items-center justify-between">
+          <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h2 className="text-base font-bold text-slate-800">Portfolio Revenue Collections</h2>
+              <h2 className="text-sm sm:text-base font-bold text-slate-800">Portfolio Revenue Collections</h2>
               <p className="text-xs text-slate-500">MahaRERA milestone receipts across Goregaon, Malad & Palghar</p>
             </div>
-            <span className="bg-emerald-50 text-emerald-700 font-bold text-xs px-2.5 py-1 rounded-lg border border-emerald-200">
+            <span className="bg-emerald-50 text-emerald-700 font-bold text-xs px-2.5 py-1 rounded-lg border border-emerald-200 w-max">
               ₹2.62 Cr Peak / Month
             </span>
           </div>
-          <div className="h-[280px] w-full">
+          <div className="h-[230px] sm:h-[280px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={revenueData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
@@ -230,8 +230,8 @@ export default function Dashboard() {
                     <stop offset="95%" stopColor="#2563eb" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} dy={10} />
-                <YAxis tickFormatter={formatYAxis} axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11 }} dy={8} />
+                <YAxis tickFormatter={formatYAxis} axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11 }} />
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                 <Tooltip 
                   formatter={(value: any) => [`₹${(Number(value || 0) / 100000).toFixed(2)} Lacs`, "Revenue"]}
@@ -248,25 +248,25 @@ export default function Dashboard() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs"
+          className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs"
         >
-          <div className="mb-6">
-            <h2 className="text-base font-bold text-slate-800">Sales Velocity (4 Weeks)</h2>
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-sm sm:text-base font-bold text-slate-800">Sales Velocity (4 Weeks)</h2>
             <p className="text-xs text-slate-500">Inquiries vs Site Visits Converted</p>
           </div>
-          <div className="h-[280px] w-full">
+          <div className="h-[230px] sm:h-[280px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={leadsData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11 }} dy={8} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11 }} />
                 <Tooltip 
                   cursor={{fill: '#f1f5f9'}}
-                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                  contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
                 />
-                <Legend iconType="circle" wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-                <Bar dataKey="generated" name="Generated" fill="#94a3b8" radius={[4, 4, 0, 0]} barSize={18} />
-                <Bar dataKey="converted" name="Converted" fill="#10b981" radius={[4, 4, 0, 0]} barSize={18} />
+                <Legend iconType="circle" wrapperStyle={{ fontSize: '11px', paddingTop: '8px' }} />
+                <Bar dataKey="generated" name="Generated" fill="#94a3b8" radius={[4, 4, 0, 0]} barSize={16} />
+                <Bar dataKey="converted" name="Converted" fill="#10b981" radius={[4, 4, 0, 0]} barSize={16} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -278,7 +278,7 @@ export default function Dashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs"
+        className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs"
       >
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-base font-bold text-slate-800">Recent Operational Triggers & Audit Log</h2>

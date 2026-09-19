@@ -105,50 +105,50 @@ export default function GuidePage() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto pb-16 space-y-8">
+    <div className="max-w-7xl mx-auto pb-10 sm:pb-16 space-y-5 sm:space-y-8">
       {/* Header Banner */}
-      <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-sm border border-slate-800 relative overflow-hidden">
+      <div className="bg-slate-900 text-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-sm border border-slate-800 relative overflow-hidden">
         <div className="relative z-10 max-w-3xl">
-          <div className="flex items-center space-x-2 mb-3">
-            <span className="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full border border-blue-400/30 flex items-center">
-              <Cpu className="w-3.5 h-3.5 mr-1.5" />
+          <div className="flex items-center space-x-2 flex-wrap gap-y-1 mb-2 sm:mb-3">
+            <span className="bg-blue-500/20 text-blue-300 text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full border border-blue-400/30 flex items-center">
+              <Cpu className="w-3.5 h-3.5 mr-1.5 shrink-0" />
               Software Architecture & Working Guide
             </span>
             <span className="text-slate-400 text-xs">• Enterprise Release 2.4</span>
           </div>
-          <h1 className="text-3xl font-black tracking-tight mb-2">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2">
             Ashapura Builders ERP & CRM Platform
           </h1>
-          <p className="text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             This executive guide details how each component of the software functions. The application is built specifically around the real business model of Ashapura Builders—balancing outright residential sales with large-scale Co-operative Housing Society (CHSL) redevelopments and suburban townships.
           </p>
         </div>
 
         {/* Floating Metrics Badge */}
-        <div className="mt-6 pt-6 border-t border-slate-800 flex flex-wrap gap-4 text-xs">
+        <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-800 flex flex-col sm:flex-row sm:flex-wrap gap-2.5 sm:gap-4 text-xs">
           <div className="flex items-center space-x-2 text-slate-300">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>MahaRERA Architecture Compliant</span>
           </div>
           <div className="flex items-center space-x-2 text-slate-300">
-            <Layers className="w-4 h-4 text-blue-400" />
+            <Layers className="w-4 h-4 text-blue-400 shrink-0" />
             <span>Multi-Project Global Context</span>
           </div>
           <div className="flex items-center space-x-2 text-slate-300">
-            <Handshake className="w-4 h-4 text-purple-400" />
+            <Handshake className="w-4 h-4 text-purple-400 shrink-0" />
             <span>Society Redevelopment Tie-Up Mode</span>
           </div>
         </div>
       </div>
 
       {/* Global Context Architecture Card */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-6 shadow-xs">
-        <div className="flex items-start space-x-4">
-          <div className="p-3 bg-blue-600 text-white rounded-xl shadow-xs shrink-0">
-            <Layers className="w-6 h-6" />
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 rounded-2xl p-4 sm:p-6 shadow-xs">
+        <div className="flex items-start space-x-3 sm:space-x-4">
+          <div className="p-2.5 sm:p-3 bg-blue-600 text-white rounded-xl shadow-xs shrink-0">
+            <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h2 className="text-base font-bold text-slate-900 mb-1">
+            <h2 className="text-sm sm:text-base font-bold text-slate-900 mb-1">
               Global Project Switcher Architecture (Top Navigation Bar)
             </h2>
             <p className="text-xs text-slate-600 leading-relaxed max-w-4xl">
@@ -159,12 +159,12 @@ export default function GuidePage() {
       </div>
 
       {/* Modules Detailed Breakdown */}
-      <div className="space-y-6">
-        <h2 className="text-xl font-black text-slate-800 tracking-tight">
+      <div className="space-y-4 sm:space-y-6">
+        <h2 className="text-lg sm:text-xl font-black text-slate-800 tracking-tight">
           Comprehensive Module-by-Module Walkthrough
         </h2>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6">
           {modules.map((mod, index) => {
             const Icon = mod.icon;
             return (
@@ -173,22 +173,22 @@ export default function GuidePage() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs hover:shadow-md transition-shadow"
+                className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs hover:shadow-md transition-shadow"
               >
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-100">
                   <div className="flex items-center space-x-3">
-                    <div className={`p-2.5 rounded-xl border ${mod.bg} ${mod.color}`}>
-                      <Icon className="w-5 h-5" />
+                    <div className={`p-2 sm:p-2.5 rounded-xl border ${mod.bg} ${mod.color} shrink-0`}>
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-slate-900">{mod.title}</h3>
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900">{mod.title}</h3>
                       <span className="text-xs font-semibold text-slate-400">{mod.badge}</span>
                     </div>
                   </div>
 
                   <Link 
                     href={mod.route}
-                    className="inline-flex items-center space-x-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors shadow-xs w-max"
+                    className="inline-flex items-center justify-center space-x-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3.5 sm:px-4 py-2 rounded-xl transition-colors shadow-xs w-full sm:w-max shrink-0"
                   >
                     <span>Launch Module</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -199,11 +199,11 @@ export default function GuidePage() {
                   {mod.summary}
                 </p>
 
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-100">
                   <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
                     Core Functional Capabilities:
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5">
                     {mod.features.map((feat, i) => (
                       <div key={i} className="flex items-start space-x-2 text-xs text-slate-600">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -219,27 +219,27 @@ export default function GuidePage() {
       </div>
 
       {/* Tech Stack & Implementation Details */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-        <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center">
-          <Zap className="w-4 h-4 text-amber-500 mr-2" />
+      <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs">
+        <h3 className="text-sm sm:text-base font-bold text-slate-800 mb-4 flex items-center">
+          <Zap className="w-4 h-4 text-amber-500 mr-2 shrink-0" />
           Technical Foundation & Performance Stack
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-xs">
+          <div className="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-100">
             <p className="text-slate-400 font-medium">Framework</p>
-            <p className="text-sm font-bold text-slate-800 mt-0.5">Next.js 15 (App Router)</p>
+            <p className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5">Next.js 15 (App Router)</p>
           </div>
-          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+          <div className="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-100">
             <p className="text-slate-400 font-medium">Bundler & Runtime</p>
-            <p className="text-sm font-bold text-slate-800 mt-0.5">Turbopack Engine</p>
+            <p className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5">Turbopack Engine</p>
           </div>
-          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+          <div className="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-100">
             <p className="text-slate-400 font-medium">Styling & Aesthetics</p>
-            <p className="text-sm font-bold text-slate-800 mt-0.5">Tailwind CSS + Glassmorphism</p>
+            <p className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5">Tailwind CSS + Glass</p>
           </div>
-          <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+          <div className="bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-100">
             <p className="text-slate-400 font-medium">Motion & Charts</p>
-            <p className="text-sm font-bold text-slate-800 mt-0.5">Framer Motion & Recharts</p>
+            <p className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5">Framer Motion & Recharts</p>
           </div>
         </div>
       </div>

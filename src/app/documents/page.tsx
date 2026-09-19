@@ -36,43 +36,43 @@ export default function DocumentsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pb-12 space-y-6">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Dynamic Cost Sheet & MahaRERA Quotation</h1>
-          <p className="text-slate-500 text-sm mt-0.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-800">Dynamic Cost Sheet & MahaRERA Quotation</h1>
+          <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
             Auto-calculated sales quotation engine with official Ashapura Builders corporate letterhead
           </p>
         </div>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto">
           <button 
             onClick={() => window.print()}
-            className="flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl font-semibold text-xs transition-colors"
+            className="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 sm:space-x-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 sm:px-4 py-2.5 rounded-xl font-semibold text-xs transition-colors"
           >
             <Printer className="w-4 h-4" />
-            <span>Print Quotation</span>
+            <span>Print</span>
           </button>
           <button 
             onClick={() => alert(`PDF Quotation for ${clientName} generated successfully!`)}
-            className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-semibold text-xs transition-colors shadow-xs"
+            className="flex-1 sm:flex-initial flex items-center justify-center space-x-1.5 sm:space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-3.5 sm:px-4 py-2.5 rounded-xl font-semibold text-xs transition-colors shadow-xs"
           >
             <Download className="w-4 h-4" />
-            <span>Export Official PDF</span>
+            <span>Export PDF</span>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
         {/* Left Column: Calculator Inputs */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs">
-            <div className="flex items-center text-blue-600 font-bold mb-5 pb-3 border-b border-slate-100 text-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-xs">
+            <div className="flex items-center text-blue-600 font-bold mb-4 sm:mb-5 pb-3 border-b border-slate-100 text-sm">
               <Calculator className="w-4 h-4 mr-2" />
               Configure Pricing & Unit
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Select Project</label>
                 <select
@@ -108,7 +108,7 @@ export default function DocumentsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-medium text-slate-700 mb-1">Carpet (sq.ft)</label>
                   <input 
@@ -150,7 +150,7 @@ export default function DocumentsPage() {
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-100">
+            <div className="mt-5 sm:mt-6 pt-4 border-t border-slate-100">
               <div className="flex justify-between items-center text-xs text-slate-500 mb-1">
                 <span>Agreement Value:</span>
                 <span className="font-semibold text-slate-700">{formatPrice(agreementValue)}</span>
@@ -169,20 +169,20 @@ export default function DocumentsPage() {
 
         {/* Right Column: Formal A4 Quotation Document Mockup */}
         <div className="lg:col-span-8">
-          <div className="bg-white border border-slate-300 rounded-2xl p-8 shadow-md print:border-none print:shadow-none min-h-[820px] flex flex-col justify-between">
+          <div className="bg-white border border-slate-300 rounded-2xl p-4 sm:p-8 shadow-md print:border-none print:shadow-none min-h-auto lg:min-h-[820px] flex flex-col justify-between">
             
             {/* Header / Letterhead */}
             <div>
-              <div className="flex justify-between items-start border-b-2 border-slate-900 pb-5 mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start border-b-2 border-slate-900 pb-4 sm:pb-5 mb-5 sm:mb-6 gap-3">
                 <div>
-                  <h2 className="text-2xl font-black text-slate-900 tracking-wider">ASHAPURA BUILDERS</h2>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-wider">ASHAPURA BUILDERS</h2>
                   <p className="text-xs font-bold text-slate-600 mt-0.5">Premier Real Estate Developers & Society Redevelopers</p>
-                  <p className="text-[11px] text-slate-500 mt-1 max-w-md leading-relaxed">
+                  <p className="text-[10px] sm:text-[11px] text-slate-500 mt-1 max-w-md leading-relaxed">
                     Head Office: 101 Jay Gagan, Nr. Liberty Garden, Road No. 3, Malad (West), Mumbai - 400104<br />
                     Phone: +91-8108101236 • Email: help.ashapura@gmail.com • Web: www.ashapurabuilder.com
                   </p>
                 </div>
-                <div className="text-right">
+                <div className="sm:text-right self-start sm:self-auto">
                   <span className="inline-block bg-slate-900 text-white font-bold text-[10px] px-2.5 py-1 rounded tracking-wider uppercase mb-1">
                     Official Quotation
                   </span>
@@ -192,7 +192,7 @@ export default function DocumentsPage() {
               </div>
 
               {/* Project & Client Details Box */}
-              <div className="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200 mb-5 sm:mb-6 text-xs">
                 <div>
                   <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Prepared For Buyer:</span>
                   <p className="font-bold text-slate-800 text-sm mt-0.5">{clientName}</p>
@@ -212,8 +212,8 @@ export default function DocumentsPage() {
               </div>
 
               {/* Detailed Cost Breakdown Table */}
-              <div className="mb-6">
-                <table className="w-full text-left text-xs border-collapse">
+              <div className="mb-6 overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse min-w-[480px]">
                   <thead>
                     <tr className="border-b border-slate-300 text-slate-500 uppercase tracking-wider">
                       <th className="py-2.5 font-bold">Particulars & Milestone Scope</th>
@@ -261,10 +261,10 @@ export default function DocumentsPage() {
                     </tr>
                   </tbody>
                   <tfoot>
-                    <tr className="border-t-2 border-slate-900 font-bold text-base text-blue-700">
-                      <td className="py-4">Grand Total (All-Inclusive Cost)</td>
+                    <tr className="border-t-2 border-slate-900 font-bold text-sm sm:text-base text-blue-700">
+                      <td className="py-3.5 sm:py-4">Grand Total (All-Inclusive Cost)</td>
                       <td></td>
-                      <td className="py-4 text-right">{formatPrice(grandTotal)}</td>
+                      <td className="py-3.5 sm:py-4 text-right">{formatPrice(grandTotal)}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -275,7 +275,7 @@ export default function DocumentsPage() {
                 <h4 className="text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-2">
                   Standard MahaRERA Construction-Linked Milestone Plan
                 </h4>
-                <div className="grid grid-cols-5 gap-2 text-center text-[10px]">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-center text-[10px]">
                   <div className="bg-white p-2 rounded border border-slate-200">
                     <p className="font-bold text-slate-800">10%</p>
                     <p className="text-slate-400">Booking Advance</p>
@@ -305,14 +305,14 @@ export default function DocumentsPage() {
               <p>1. This quotation is valid for 15 days from the date of issuance.</p>
               <p>2. Cheques / RTGS payable in favour of official MahaRERA project designated escrow account.</p>
               
-              <div className="flex justify-between items-end mt-8 pt-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mt-6 sm:mt-8 pt-4 sm:pt-6">
                 <div>
-                  <div className="border-t border-slate-400 w-40 pt-1 text-center font-bold text-slate-700">
+                  <div className="border-t border-slate-400 w-36 sm:w-40 pt-1 text-center font-bold text-slate-700">
                     Buyer Signature
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="border-t border-slate-400 w-48 pt-1 text-center font-bold text-slate-700">
+                <div className="sm:text-right">
+                  <div className="border-t border-slate-400 w-44 sm:w-48 pt-1 text-center font-bold text-slate-700">
                     For Ashapura Builders
                   </div>
                   <p className="text-[9px] text-slate-400 mt-0.5 text-center">Authorized Sales Signatory</p>

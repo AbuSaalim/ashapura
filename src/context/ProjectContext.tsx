@@ -8,12 +8,15 @@ interface ProjectContextType {
   selectedProjectId: string;
   setSelectedProjectId: (id: string) => void;
   projects: Project[];
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
 }
 
 const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 
 export function ProjectProvider({ children }: { children: React.ReactNode }) {
   const [selectedProjectId, setSelectedProjectIdState] = useState<string>("proj-amar-chsl");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("ashapura_selected_project");
@@ -36,6 +39,8 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
         selectedProjectId,
         setSelectedProjectId,
         projects: mockProjects,
+        isMobileMenuOpen,
+        setIsMobileMenuOpen,
       }}
     >
       {children}

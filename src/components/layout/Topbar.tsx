@@ -16,7 +16,7 @@ export function Topbar() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-2 sm:px-6 sticky top-0 z-20 shadow-xs max-w-full overflow-hidden">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-2 sm:px-6 sticky top-0 z-30 shadow-xs max-w-full">
       {/* Left: Mobile Hamburger & Active Project Selector */}
       <div className="flex items-center space-x-1 sm:space-x-3 min-w-0 flex-1 sm:flex-initial mr-1 sm:mr-0">
         {/* Mobile Hamburger Toggle Button */}
@@ -32,7 +32,7 @@ export function Topbar() {
         <div className="relative min-w-0 flex-1 sm:flex-initial">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center space-x-1.5 sm:space-x-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 px-2 sm:px-3.5 py-1.5 rounded-xl transition-all text-left group max-w-[135px] xs:max-w-[190px] sm:max-w-xs md:max-w-none"
+            className="flex items-center space-x-1.5 sm:space-x-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 px-2 sm:px-3.5 py-1.5 rounded-xl transition-all text-left group max-w-[145px] xs:max-w-[210px] sm:max-w-xs md:max-w-none shadow-2xs"
           >
             <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-xs shrink-0">
               <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -58,48 +58,63 @@ export function Topbar() {
 
           {/* Project Dropdown Menu */}
           {showDropdown && (
-            <div className="absolute left-0 mt-2 w-72 sm:w-84 max-w-[calc(100vw-1rem)] bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-              <div className="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Switch Project Portfolio</span>
-                <span className="text-[11px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-medium">6 Active</span>
-              </div>
-              <div className="max-h-72 overflow-y-auto divide-y divide-slate-50">
-                {projects.map((proj) => (
-                  <button
-                    key={proj.id}
-                    onClick={() => {
-                      setSelectedProjectId(proj.id);
-                      setShowDropdown(false);
-                    }}
-                    className={`w-full px-3.5 py-2.5 text-left flex items-start space-x-3 hover:bg-blue-50/60 transition-colors ${
-                      proj.id === selectedProjectId ? 'bg-blue-50/80 border-l-4 border-blue-600' : ''
-                    }`}
-                  >
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs mt-0.5 shrink-0 ${
-                      proj.isRedevelopment ? 'bg-purple-100 text-purple-700' : 'bg-slate-100 text-slate-700'
-                    }`}>
-                      <Building2 className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-800 truncate">{proj.name}</span>
-                        {proj.status === "COMPLETED" ? (
-                          <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-semibold shrink-0">Delivered</span>
-                        ) : (
-                          <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.2 rounded font-semibold shrink-0">Ongoing</span>
-                        )}
+            <>
+              {/* Backdrop to close dropdown on click outside */}
+              <div 
+                className="fixed inset-0 z-40 bg-slate-900/10 backdrop-blur-[1px]" 
+                onClick={() => setShowDropdown(false)} 
+              />
+              <div className="absolute left-0 top-full mt-2 w-80 sm:w-96 max-w-[calc(100vw-1rem)] bg-white rounded-2xl shadow-2xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                <div className="px-3.5 py-2 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Switch Building Portfolio</span>
+                  <span className="text-[11px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-bold">{projects.length} Real Projects</span>
+                </div>
+                <div className="max-h-84 overflow-y-auto divide-y divide-slate-100">
+                  {projects.map((proj) => (
+                    <button
+                      key={proj.id}
+                      onClick={() => {
+                        setSelectedProjectId(proj.id);
+                        setShowDropdown(false);
+                      }}
+                      className={`w-full px-3.5 py-2.5 text-left flex items-start space-x-3 hover:bg-blue-50/60 transition-colors ${
+                        proj.id === selectedProjectId ? 'bg-blue-50/80 border-l-4 border-blue-600' : ''
+                      }`}
+                    >
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs mt-0.5 shrink-0 ${
+                        proj.isRedevelopment ? 'bg-purple-100 text-purple-700' : 'bg-slate-100 text-slate-700'
+                      }`}>
+                        <Building2 className="w-4 h-4" />
                       </div>
-                      <p className="text-[11px] text-slate-500 truncate">{proj.location}</p>
-                      {proj.isRedevelopment && (
-                        <span className="inline-block mt-0.5 text-[10px] text-purple-600 font-medium">
-                          🤝 Society Rehab: {proj.rehabFlatsCount} Flats
-                        </span>
-                      )}
-                    </div>
-                  </button>
-                ))}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="text-xs font-bold text-slate-800 truncate">{proj.name}</span>
+                          {proj.status === "COMPLETED" ? (
+                            <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-semibold shrink-0">Delivered</span>
+                          ) : proj.status === "UPCOMING" ? (
+                            <span className="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.2 rounded font-semibold shrink-0">Upcoming</span>
+                          ) : (
+                            <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.2 rounded font-semibold shrink-0">Ongoing</span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-slate-500 truncate">{proj.location}</p>
+                        <div className="flex items-center space-x-2 mt-1 flex-wrap gap-y-0.5 text-[10px]">
+                          <span className="text-slate-600 font-medium">₹{proj.baseRate.toLocaleString('en-IN')}/sqft</span>
+                          <span className="text-slate-300">•</span>
+                          <span className="text-slate-500">{proj.wings.length} {proj.wings.length === 1 ? 'Wing' : 'Wings'} ({proj.totalFloors} Flr)</span>
+                          {proj.isRedevelopment && (
+                            <>
+                              <span className="text-slate-300">•</span>
+                              <span className="text-purple-600 font-bold">🤝 Rehab Quota</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            </>
           )}
         </div>
 

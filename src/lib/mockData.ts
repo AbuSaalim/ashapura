@@ -45,7 +45,7 @@ export const mockProjects: Project[] = [
   {
     id: "proj-meghmala",
     name: "Meghmala Crysta",
-    tagline: "Ultra Luxury High-Rise Residential",
+    tagline: "Ultra Luxury High-Rise (72,000 sq.ft)",
     location: "Malad West, Mumbai",
     address: "Liberty Garden, Road No 3, Malad (W), Mumbai - 400064",
     type: "HIGH_RISE",
@@ -62,7 +62,7 @@ export const mockProjects: Project[] = [
   {
     id: "proj-navkar",
     name: "Navkar Heritage",
-    tagline: "Boutique Living & Contemporary Amenities",
+    tagline: "Boutique Living & Contemporary Amenities (29,000 sq.ft)",
     location: "Goregaon West, Mumbai",
     address: "Jawahar Nagar, Goregaon (W), Mumbai - 400104",
     type: "BOUTIQUE_RESIDENTIAL",
@@ -96,8 +96,8 @@ export const mockProjects: Project[] = [
   {
     id: "proj-aloha",
     name: "Aloha Township",
-    tagline: "Green Suburban Gated Community",
-    location: "Palghar, Mumbai Suburban",
+    tagline: "Suburban Integrated Gated Township (3.5 Lac sq.ft)",
+    location: "Palghar West, Mumbai Suburban",
     address: "Mahim Road, Near Railway Station, Palghar - 401404",
     type: "TOWNSHIP",
     status: "ONGOING",
@@ -113,17 +113,87 @@ export const mockProjects: Project[] = [
   {
     id: "proj-ronak-villa",
     name: "Ronak Villa",
-    tagline: "Delivered Low-Rise Residential",
+    tagline: "Delivered Low-Rise Residential (21,000 sq.ft with OC)",
     location: "Goregaon West, Mumbai",
-    address: "Jawahar Nagar, Goregaon (W), Mumbai",
+    address: "Jawahar Nagar, Goregaon (W), Mumbai - 400104",
     type: "BOUTIQUE_RESIDENTIAL",
     status: "COMPLETED",
     totalFloors: 7,
     unitsPerFloor: 4,
     wings: ["Wing A"],
-    baseRate: 19000,
+    baseRate: 19500,
     isRedevelopment: true,
-    saleableFlatsCount: 29,
+    societyName: "Ronak Villa CHSL",
+    rehabFlatsCount: 12,
+    saleableFlatsCount: 17,
+  },
+  {
+    id: "proj-jaygagan",
+    name: "Jay Gagan (Corporate HO)",
+    tagline: "Delivered Landmark (22,000 sq.ft)",
+    location: "Malad West, Mumbai",
+    address: "101 Jay Gagan, Nr. Liberty Garden, Road No. 3, Malad (W), Mumbai - 400104",
+    type: "BOUTIQUE_RESIDENTIAL",
+    status: "COMPLETED",
+    totalFloors: 8,
+    unitsPerFloor: 3,
+    wings: ["Tower 1"],
+    baseRate: 22500,
+    isRedevelopment: false,
+    saleableFlatsCount: 24,
+  },
+  {
+    id: "proj-nishad-chsl",
+    name: "Nishad CHSL (Redevelopment)",
+    tagline: "Upcoming Prime Society Redevelopment",
+    location: "Goregaon West, Mumbai",
+    address: "Near S.V. Road & Station, Goregaon (W), Mumbai - 400104",
+    type: "REDEVELOPMENT_CHSL",
+    status: "UPCOMING",
+    reraId: "P51800045920",
+    totalFloors: 14,
+    unitsPerFloor: 4,
+    wings: ["Wing A"],
+    baseRate: 21000,
+    isRedevelopment: true,
+    societyName: "Nishad Co-Operative Housing Society Ltd.",
+    rehabFlatsCount: 24,
+    saleableFlatsCount: 28,
+    investorFlatsCount: 4,
+  },
+  {
+    id: "proj-diyana-villa",
+    name: "Diyana Villa",
+    tagline: "Boutique 1 & 2 BHK Luxury Duplexes",
+    location: "Goregaon West, Mumbai",
+    address: "Jawahar Nagar, Goregaon (W), Mumbai - 400104",
+    type: "BOUTIQUE_RESIDENTIAL",
+    status: "ONGOING",
+    reraId: "P51800039910",
+    totalFloors: 9,
+    unitsPerFloor: 3,
+    wings: ["Wing A"],
+    baseRate: 20500,
+    isRedevelopment: false,
+    saleableFlatsCount: 24,
+    investorFlatsCount: 3,
+  },
+  {
+    id: "proj-riddhi-tower",
+    name: "Riddhi Tower",
+    tagline: "High-Rise Luxury Residential (Thane Division)",
+    location: "Thane West, Mumbai MMR",
+    address: "Panchpakhadi, Near Teen Hath Naka, Thane (W) - 400602",
+    type: "HIGH_RISE",
+    status: "ONGOING",
+    reraId: "P51700031852",
+    totalFloors: 18,
+    unitsPerFloor: 4,
+    wings: ["Wing A", "Wing B"],
+    baseRate: 14200,
+    isRedevelopment: false,
+    saleableFlatsCount: 130,
+    investorFlatsCount: 14,
   }
 ];
 
@@ -147,170 +217,84 @@ export interface Flat {
 const generateAllInventory = (): Flat[] => {
   const flats: Flat[] = [];
 
-  // Generate Amar CHSL (Society Redevelopment Model)
-  const amar = mockProjects[0];
-  const rehabMembers = [
-    "Mr. Ramesh Joshi (Old Flat 101)", "Smt. Nalini Desai (Old Flat 102)",
-    "Mr. Prakash Shah (Old Flat 201)", "Mr. Kirit Mehta (Old Flat 202)",
-    "Dr. Arvind Kulkarni (Old Flat 301)", "Smt. Rekha Patel (Old Flat 302)",
-    "Mr. Deepak Trivedi (Old Flat 401)", "Mr. Suresh Singhania (Old Flat 402)",
-    "Mr. Ashok Somani (Old Flat 501)", "Smt. Bharti Vora (Old Flat 502)",
-    "Mr. Nilesh Parekh (Old Flat 601)", "Mr. Viren Chhabria (Old Flat 602)",
-    "Smt. Alka Zaveri (Old Flat 701)", "Mr. Bhavesh Shah (Old Flat 702)",
-    "Mr. Jatin Kothari (Old Flat 801)", "Mr. Chetan Gandhi (Old Flat 802)",
-    "Smt. Geeta Bhatt (Old Flat 901)", "Mr. Mahendra Jain (Old Flat 902)",
-    "Mr. Hitesh Dalal (Old Flat 1001)", "Smt. Mona Agarwal (Old Flat 1002)"
+  const rehabNames = [
+    "Mr. Ramesh Joshi", "Smt. Nalini Desai", "Mr. Prakash Shah", "Mr. Kirit Mehta",
+    "Dr. Arvind Kulkarni", "Smt. Rekha Patel", "Mr. Deepak Trivedi", "Mr. Suresh Singhania",
+    "Mr. Ashok Somani", "Smt. Bharti Vora", "Mr. Nilesh Parekh", "Mr. Viren Chhabria",
+    "Smt. Alka Zaveri", "Mr. Bhavesh Shah", "Mr. Jatin Kothari", "Mr. Chetan Gandhi",
+    "Smt. Geeta Bhatt", "Mr. Mahendra Jain", "Mr. Hitesh Dalal", "Smt. Mona Agarwal",
+    "Mr. Rajesh Panchal", "Mrs. Sudha Hegde", "Mr. Dilip Maniar", "Smt. Sarojini Iyer"
   ];
 
-  for (let floor = 1; floor <= amar.totalFloors; floor++) {
-    for (let u = 1; u <= amar.unitsPerFloor; u++) {
-      const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
-      const is2BHK = u % 2 === 0;
+  mockProjects.forEach((project) => {
+    project.wings.forEach((wing) => {
+      for (let floor = 1; floor <= project.totalFloors; floor++) {
+        for (let u = 1; u <= project.unitsPerFloor; u++) {
+          const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
+          const is3BHK = project.unitsPerFloor >= 4 && u === project.unitsPerFloor;
+          const is2BHK = u % 2 === 0;
 
-      // Floors 1-5 are Society Rehab Quota (Tie-up)
-      let quota: UnitQuota = "BUILDER_SALE";
-      let status: UnitStatus = "AVAILABLE";
-      let memberName: string | undefined = undefined;
-      let investorName: string | undefined = undefined;
-      let customerName: string | undefined = undefined;
+          let quota: UnitQuota = "BUILDER_SALE";
+          let status: UnitStatus = "AVAILABLE";
+          let memberName: string | undefined = undefined;
+          let investorName: string | undefined = undefined;
+          let customerName: string | undefined = undefined;
 
-      const flatIndex = (floor - 1) * 4 + (u - 1);
-      if (flatIndex < 20) {
-        quota = "SOCIETY_REHAB";
-        status = "SOCIETY_REHAB";
-        memberName = rehabMembers[flatIndex] || `Society Member ${unitNumber}`;
-      } else if (floor >= 11 && u >= 3) {
-        quota = "INVESTOR_SHARE";
-        status = "INVESTOR_HOLD";
-        investorName = "Apex Capital Partners JV";
-      } else {
-        quota = "BUILDER_SALE";
-        if (floor === 8 && u === 1) {
-          status = "BOOKED";
-          customerName = "Vikram Aditya (Adv. High Court)";
-        } else if (floor === 9 && u === 2) {
-          status = "HOLD";
-          customerName = "Prashant Singhal (Token Paid)";
-        } else if (floor === 7 && u === 4) {
-          status = "BOOKED";
-          customerName = "Sunita Rao";
+          if (project.isRedevelopment) {
+            const flatIndex = (floor - 1) * project.unitsPerFloor + (u - 1);
+            if (flatIndex < (project.rehabFlatsCount || 16)) {
+              quota = "SOCIETY_REHAB";
+              status = "SOCIETY_REHAB";
+              memberName = `${rehabNames[flatIndex % rehabNames.length]} (Old Flat ${100 + flatIndex + 1})`;
+            } else if (floor === project.totalFloors && u >= 2) {
+              quota = "INVESTOR_SHARE";
+              status = "INVESTOR_HOLD";
+              investorName = "Apex Capital Partners JV";
+            } else if ((floor + u) % 4 === 0) {
+              status = "BOOKED";
+              customerName = `Buyer ${unitNumber}`;
+            } else if ((floor + u) % 5 === 0) {
+              status = "HOLD";
+              customerName = `Token Advance (${unitNumber})`;
+            }
+          } else {
+            if (project.status === "COMPLETED") {
+              status = "BOOKED";
+              customerName = `Resident Allottee ${unitNumber}`;
+            } else {
+              if (floor === project.totalFloors && u === project.unitsPerFloor) {
+                quota = "INVESTOR_SHARE";
+                status = "INVESTOR_HOLD";
+                investorName = "Promoters JV Holding";
+              } else if ((floor * 3 + u) % 5 === 0) {
+                status = "BOOKED";
+                customerName = `Client ${wing}-${unitNumber}`;
+              } else if ((floor * 2 + u) % 7 === 0) {
+                status = "HOLD";
+                customerName = `Token Advance (${wing}-${unitNumber})`;
+              }
+            }
+          }
+
+          flats.push({
+            id: `${project.id}-${wing.replace(/\s+/g, '')}-${unitNumber}`,
+            projectId: project.id,
+            projectName: project.name,
+            wing,
+            floor,
+            unitNumber,
+            type: is3BHK ? "3BHK" : (is2BHK ? "2BHK" : "1BHK"),
+            carpetArea: is3BHK ? 1080 : (is2BHK ? 740 : 485),
+            baseRate: project.baseRate,
+            quota,
+            status,
+            customerName,
+            societyMemberName: memberName,
+            investorName,
+          });
         }
       }
-
-      flats.push({
-        id: `amar-${unitNumber}`,
-        projectId: amar.id,
-        projectName: amar.name,
-        wing: "Tower 1",
-        floor,
-        unitNumber,
-        type: is2BHK ? "2BHK" : "1BHK",
-        carpetArea: is2BHK ? 720 : 490,
-        baseRate: amar.baseRate,
-        quota,
-        status,
-        societyMemberName: memberName,
-        investorName,
-        customerName,
-      });
-    }
-  }
-
-  // Generate Meghmala Crysta (Malad West High-Rise)
-  const meghmala = mockProjects[1];
-  meghmala.wings.forEach(wing => {
-    for (let floor = 1; floor <= meghmala.totalFloors; floor++) {
-      for (let u = 1; u <= meghmala.unitsPerFloor; u++) {
-        const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
-        const is3BHK = u === 5;
-        const is2BHK = u % 2 === 0;
-
-        let quota: UnitQuota = "BUILDER_SALE";
-        let status: UnitStatus = "AVAILABLE";
-        let customerName: string | undefined = undefined;
-        let investorName: string | undefined = undefined;
-
-        if (wing === "Wing B" && floor >= 14 && u >= 4) {
-          quota = "INVESTOR_SHARE";
-          status = "INVESTOR_HOLD";
-          investorName = "Jay Gagan Promoters Holding";
-        } else if ((floor * 3 + u) % 7 === 0) {
-          status = "BOOKED";
-          customerName = `Client ${wing}-${unitNumber}`;
-        } else if ((floor * 5 + u) % 11 === 0) {
-          status = "HOLD";
-          customerName = `Token Advance (${wing}-${unitNumber})`;
-        }
-
-        flats.push({
-          id: `megh-${wing.replace(/\s+/g, '')}-${unitNumber}`,
-          projectId: meghmala.id,
-          projectName: meghmala.name,
-          wing,
-          floor,
-          unitNumber,
-          type: is3BHK ? "3BHK" : (is2BHK ? "2BHK" : "1BHK"),
-          carpetArea: is3BHK ? 1050 : (is2BHK ? 760 : 510),
-          baseRate: meghmala.baseRate,
-          quota,
-          status,
-          customerName,
-          investorName,
-        });
-      }
-    }
-  });
-
-  // Generate Navkar Heritage (Goregaon West)
-  const navkar = mockProjects[2];
-  for (let floor = 1; floor <= navkar.totalFloors; floor++) {
-    for (let u = 1; u <= navkar.unitsPerFloor; u++) {
-      const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
-      const is2BHK = u >= 2;
-      const status: UnitStatus = (floor === 3 && u === 1) || (floor === 7 && u === 2) ? "BOOKED" : (floor === 5 ? "HOLD" : "AVAILABLE");
-      
-      flats.push({
-        id: `navkar-${unitNumber}`,
-        projectId: navkar.id,
-        projectName: navkar.name,
-        wing: "Wing A",
-        floor,
-        unitNumber,
-        type: is2BHK ? "2BHK" : "1BHK",
-        carpetArea: is2BHK ? 780 : 540,
-        baseRate: navkar.baseRate,
-        quota: "BUILDER_SALE",
-        status,
-        customerName: status === "BOOKED" ? `Owner ${unitNumber}` : undefined,
-      });
-    }
-  }
-
-  // Generate Aloha Township (Palghar)
-  const aloha = mockProjects[4];
-  aloha.wings.forEach(phase => {
-    for (let floor = 1; floor <= aloha.totalFloors; floor++) {
-      for (let u = 1; u <= aloha.unitsPerFloor; u++) {
-        const unitNumber = `${floor}${u.toString().padStart(2, '0')}`;
-        const is2BHK = u % 2 === 0;
-        const status: UnitStatus = (floor === 2 && u === 3) || (floor === 4 && u === 1) ? "BOOKED" : "AVAILABLE";
-
-        flats.push({
-          id: `aloha-${phase.replace(/\s+/g, '')}-${unitNumber}`,
-          projectId: aloha.id,
-          projectName: aloha.name,
-          wing: phase,
-          floor,
-          unitNumber,
-          type: is2BHK ? "2BHK" : "1BHK",
-          carpetArea: is2BHK ? 650 : 420,
-          baseRate: aloha.baseRate,
-          quota: "BUILDER_SALE",
-          status,
-          customerName: status === "BOOKED" ? `Allottee ${unitNumber}` : undefined,
-        });
-      }
-    }
+    });
   });
 
   return flats;
@@ -336,6 +320,9 @@ export const mockLeads: Lead[] = [
   { id: "L003", name: "Amit Kumar", phone: "+91 9876543212", preferredProject: "Bhagywan Primrose (Bhandup)", preferredConfig: "1 BHK", budget: "95 Lacs", source: "99acres", status: "VISIT_PLANNED", date: new Date(Date.now() - 172800000).toISOString() },
   { id: "L004", name: "Priya Singh", phone: "+91 9876543213", preferredProject: "Navkar Heritage (Goregaon W)", preferredConfig: "2 BHK", budget: "1.7 Cr", source: "Walk-in Malad HO", status: "NEGOTIATION", date: new Date(Date.now() - 259200000).toISOString() },
   { id: "L005", name: "Vikas Jain", phone: "+91 9876543214", preferredProject: "Aloha (Palghar)", preferredConfig: "1 BHK", budget: "32 Lacs", source: "Meta Ads", status: "BOOKED", date: new Date(Date.now() - 345600000).toISOString() },
+  { id: "L006", name: "Kavita Shah", phone: "+91 9820123456", preferredProject: "Diyana Villa (Goregaon W)", preferredConfig: "2 BHK Duplex", budget: "1.9 Cr", source: "Channel Partner", status: "CONTACTED", date: new Date(Date.now() - 120000000).toISOString() },
+  { id: "L007", name: "Nitin Sawant", phone: "+91 9833445566", preferredProject: "Riddhi Tower (Thane W)", preferredConfig: "3 BHK", budget: "1.45 Cr", source: "MagicBricks", status: "VISIT_PLANNED", date: new Date(Date.now() - 43200000).toISOString() },
+  { id: "L008", name: "Girish Kulkarni", phone: "+91 9819876543", preferredProject: "Nishad CHSL (Goregaon W)", preferredConfig: "2 BHK", budget: "1.6 Cr", source: "Walk-in Malad HO", status: "NEW", date: new Date().toISOString() },
 ];
 
 export interface Demand {
@@ -356,4 +343,6 @@ export const mockDemands: Demand[] = [
   { id: "D002", projectId: "proj-amar-chsl", projectName: "Amar CHSL (Redev)", flatNo: "Rehab Allottees", customerName: "Amar CHSL Society Corpus Fund", milestone: "Displacement Hardship Allowance (Q2)", amount: 1800000, dueDate: new Date(Date.now() - 86400000 * 2).toISOString(), type: "SOCIETY_CORPUS", status: "OVERDUE" },
   { id: "D003", projectId: "proj-amar-chsl", projectName: "Amar CHSL (Redev)", flatNo: "Tower 1-801", customerName: "Vikram Aditya", milestone: "Plinth Completion Milestone", amount: 1500000, dueDate: new Date(Date.now() - 86400000 * 10).toISOString(), type: "CUSTOMER_MILESTONE", status: "PAID" },
   { id: "D004", projectId: "proj-bhagywan", projectName: "Bhagywan Primrose", flatNo: "Wing B-105", customerName: "Anita Desai", milestone: "Booking Agreement Execution", amount: 850000, dueDate: new Date(Date.now() + 86400000 * 3).toISOString(), type: "CUSTOMER_MILESTONE", status: "PENDING" },
+  { id: "D005", projectId: "proj-riddhi-tower", projectName: "Riddhi Tower", flatNo: "Wing A-703", customerName: "Sunil Shinde", milestone: "5th Slab Casting Demand", amount: 980000, dueDate: new Date(Date.now() + 86400000 * 7).toISOString(), type: "CUSTOMER_MILESTONE", status: "PENDING" },
+  { id: "D006", projectId: "proj-diyana-villa", projectName: "Diyana Villa", flatNo: "Wing A-301", customerName: "Ketan Parekh", milestone: "Plinth Level Completion", amount: 1400000, dueDate: new Date(Date.now() - 86400000 * 4).toISOString(), type: "CUSTOMER_MILESTONE", status: "OVERDUE" },
 ];

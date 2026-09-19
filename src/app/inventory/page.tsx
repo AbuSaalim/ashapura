@@ -64,14 +64,14 @@ export default function InventoryPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6 max-w-full overflow-hidden">
       {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-white p-3.5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs max-w-full">
         <div>
           <div className="flex items-center space-x-2 flex-wrap gap-y-1">
             <h1 className="text-xl sm:text-2xl font-bold text-slate-800">{selectedProject.name}</h1>
             {selectedProject.isRedevelopment && (
-              <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded-full border border-purple-200 flex items-center space-x-1">
+              <span className="bg-purple-100 text-purple-800 text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-purple-200 flex items-center space-x-1">
                 <Handshake className="w-3.5 h-3.5 mr-1" />
                 Society Redevelopment Tie-up
               </span>
@@ -83,13 +83,13 @@ export default function InventoryPage() {
         </div>
 
         {/* Wing / Tower Switcher */}
-        <div className="flex items-center space-x-1.5 sm:space-x-2 bg-slate-100 p-1 sm:p-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
+        <div className="flex items-center space-x-1 sm:space-x-2 bg-slate-100 p-1 rounded-xl border border-slate-200 self-start sm:self-auto overflow-x-auto max-w-full">
           {selectedProject.wings.map(wing => (
             <button
               key={wing}
               onClick={() => setActiveWing(wing)}
               className={clsx(
-                "px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all",
+                "px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all shrink-0",
                 activeWing === wing 
                   ? "bg-white text-blue-600 shadow-sm" 
                   : "text-slate-600 hover:text-slate-900"

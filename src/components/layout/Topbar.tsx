@@ -16,49 +16,49 @@ export function Topbar() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-3 sm:px-6 sticky top-0 z-20 shadow-xs">
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-2 sm:px-6 sticky top-0 z-20 shadow-xs max-w-full overflow-hidden">
       {/* Left: Mobile Hamburger & Active Project Selector */}
-      <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+      <div className="flex items-center space-x-1 sm:space-x-3 min-w-0 flex-1 sm:flex-initial mr-1 sm:mr-0">
         {/* Mobile Hamburger Toggle Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors shrink-0"
+          className="md:hidden p-1.5 sm:p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors shrink-0"
           aria-label="Toggle mobile menu"
         >
           <Menu className="w-5 h-5" />
         </button>
 
         {/* Project Selector */}
-        <div className="relative">
+        <div className="relative min-w-0 flex-1 sm:flex-initial">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center space-x-2 sm:space-x-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 px-2.5 sm:px-3.5 py-1.5 rounded-xl transition-all text-left group max-w-[210px] sm:max-w-xs md:max-w-none"
+            className="flex items-center space-x-1.5 sm:space-x-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-300 px-2 sm:px-3.5 py-1.5 rounded-xl transition-all text-left group max-w-[135px] xs:max-w-[190px] sm:max-w-xs md:max-w-none"
           >
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-xs shrink-0">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-xs shrink-0">
               <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
-            <div className="min-w-0">
-              <div className="flex items-center space-x-1.5">
-                <span className="text-xs font-bold text-slate-800 leading-tight truncate">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center space-x-1">
+                <span className="text-[11px] sm:text-xs font-bold text-slate-800 leading-tight truncate block">
                   {selectedProject.name}
                 </span>
                 {selectedProject.isRedevelopment && (
-                  <span className="hidden sm:inline-block bg-purple-100 text-purple-700 text-[10px] font-semibold px-1.5 py-0.5 rounded-sm shrink-0">
+                  <span className="hidden xs:inline-block bg-purple-100 text-purple-700 text-[9px] font-semibold px-1 py-0.2 rounded-sm shrink-0">
                     CHSL
                   </span>
                 )}
               </div>
-              <div className="hidden xs:flex items-center text-[10px] sm:text-[11px] text-slate-500 space-x-1 truncate">
+              <div className="hidden sm:flex items-center text-[10px] sm:text-[11px] text-slate-500 space-x-1 truncate">
                 <MapPin className="w-3 h-3 text-slate-400 inline shrink-0" />
                 <span className="truncate">{selectedProject.location}</span>
               </div>
             </div>
-            <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 ml-1 shrink-0 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 text-slate-400 ml-0.5 sm:ml-1 shrink-0 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`} />
           </button>
 
           {/* Project Dropdown Menu */}
           {showDropdown && (
-            <div className="absolute left-0 mt-2 w-72 sm:w-84 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+            <div className="absolute left-0 mt-2 w-72 sm:w-84 max-w-[calc(100vw-1rem)] bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
               <div className="px-3 py-1.5 border-b border-slate-100 flex items-center justify-between">
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Switch Project Portfolio</span>
                 <span className="text-[11px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-medium">6 Active</span>
@@ -115,7 +115,7 @@ export function Topbar() {
       </div>
 
       {/* Right Side: Office Badge, Notifications & Admin Info */}
-      <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+      <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
         {/* Head Office Tag (xl screens only) */}
         <div className="hidden xl:flex items-center space-x-1.5 bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg border border-slate-200 text-[11px] font-medium">
           <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
@@ -125,15 +125,15 @@ export function Topbar() {
         {/* Notifications button */}
         <button 
           onClick={() => alert("Notification: Amar CHSL 5th Slab reached. 4 customer milestone demands ready.")}
-          className="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors"
+          className="relative p-1.5 sm:p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors shrink-0"
           title="Notifications"
         >
-          <Bell className="w-4.5 h-4.5" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+          <Bell className="w-4 sm:w-4.5 h-4 sm:h-4.5" />
+          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
         </button>
         
         {/* Admin profile */}
-        <div className="flex items-center space-x-2 sm:space-x-2.5 pl-2 sm:pl-3 border-l border-slate-200 cursor-pointer">
+        <div className="flex items-center space-x-1.5 sm:space-x-2.5 pl-1.5 sm:pl-3 border-l border-slate-200 cursor-pointer shrink-0">
           <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow-xs shrink-0">
             AB
           </div>

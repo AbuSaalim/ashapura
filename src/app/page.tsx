@@ -81,7 +81,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-6 sm:space-y-8">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-6 sm:space-y-8 max-w-full overflow-hidden">
       {/* Top Banner: Real Ashapura Group Profile */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 rounded-2xl p-4 sm:p-6 text-white shadow-md relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -319,18 +319,20 @@ export default function Dashboard() {
               bg: "bg-amber-100" 
             },
           ].map((log, i) => (
-            <div key={i} className="flex items-start p-3 rounded-xl hover:bg-slate-50 transition-colors">
-              <div className={`w-3 h-3 mt-1.5 rounded-full ${log.bg} ring-4 ring-slate-100 shrink-0`} />
-              <div className="ml-4 flex-1">
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
-                    {log.project}
-                  </span>
-                  <p className="font-semibold text-slate-800 text-sm">{log.action}</p>
+            <div key={i} className="flex flex-col sm:flex-row sm:items-start justify-between gap-1.5 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+              <div className="flex items-start">
+                <div className={`w-2.5 h-2.5 mt-1.5 rounded-full ${log.bg} ring-4 ring-slate-100 shrink-0`} />
+                <div className="ml-3 flex-1 min-w-0">
+                  <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                    <span className="text-[10px] sm:text-xs font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded shrink-0">
+                      {log.project}
+                    </span>
+                    <p className="font-semibold text-slate-800 text-xs sm:text-sm">{log.action}</p>
+                  </div>
+                  <p className="text-slate-500 text-[11px] sm:text-xs mt-1 break-words">{log.detail}</p>
                 </div>
-                <p className="text-slate-500 text-xs mt-1">{log.detail}</p>
               </div>
-              <div className="text-[11px] font-medium text-slate-400 whitespace-nowrap ml-4">
+              <div className="text-[10px] sm:text-[11px] font-medium text-slate-400 sm:whitespace-nowrap sm:ml-4 self-end sm:self-auto shrink-0">
                 {log.time}
               </div>
             </div>

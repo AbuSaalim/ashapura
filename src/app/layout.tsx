@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 import { ProjectProvider } from "@/context/ProjectContext";
+import { BottomNav } from "@/components/layout/BottomNav";
 
 export default function RootLayout({
   children,
@@ -23,11 +24,12 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-50 text-slate-900 flex h-screen overflow-hidden`}>
         <ProjectProvider>
           <Sidebar />
-          <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex-1 flex flex-col min-w-0 max-w-full overflow-hidden">
             <Topbar />
-            <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6">
+            <main className="flex-1 overflow-y-auto overflow-x-hidden p-2.5 sm:p-4 md:p-6 pb-20 md:pb-6">
               {children}
             </main>
+            <BottomNav />
           </div>
         </ProjectProvider>
       </body>

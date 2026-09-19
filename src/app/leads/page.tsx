@@ -49,16 +49,16 @@ export default function LeadsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6">
+    <div className="max-w-7xl mx-auto pb-8 sm:pb-12 space-y-4 sm:space-y-6 max-w-full overflow-hidden">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-white p-3.5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs max-w-full">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold text-slate-800">Lead CRM & Sales Pipeline</h1>
           <p className="text-slate-500 text-xs sm:text-sm mt-0.5">Centralized buyer inquiries across Mumbai & Palghar developments</p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-5 py-2.5 rounded-xl font-semibold text-xs transition-colors flex items-center justify-center shadow-xs shrink-0"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl font-semibold text-xs transition-colors flex items-center justify-center shadow-xs shrink-0"
         >
           <Plus className="w-4 h-4 mr-1.5" />
           Ingest Walk-In / Ad Lead
